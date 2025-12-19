@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Камазианство - Религия Дороги</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-gray: #0a0a0a;
+            --medium-gray: #1a1a1a;
+            --light-gray: #2a2a2a;
+            --blood-red: #8b0000;
+            --bright-red: #cc0000;
+            --rust-red: #b7410e;
+            --diesel-yellow: #ffcc00;
+            --smoke-gray: #888888;
+            --asphalt: #333333;
+            --text-light: #e8e8e8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', 'Verdana', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-gray);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image:
+                    radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.05) 0%, transparent 20%),
+                    radial-gradient(circle at 90% 80%, rgba(139, 0, 0, 0.05) 0%, transparent 20%);
+        }
+
+        /* Стили для хедера */
+        .header {
+            background: linear-gradient(to bottom, rgba(10,10,10,0.95), rgba(10,10,10,0.8));
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--blood-red);
+            box-shadow: 0 5px 25px rgba(139, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--bright-red);
+            font-size: 2.8rem;
+            text-shadow: 0 0 15px rgba(204, 0, 0, 0.7);
+            animation: engine-pulse 3s infinite;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--diesel-yellow);
+            text-transform: uppercase;
+            text-shadow:
+                    2px 2px 0 var(--blood-red),
+                    4px 4px 0 rgba(0,0,0,0.8);
+        }
+
+        .nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: var(--diesel-yellow);
+            background-color: rgba(139, 0, 0, 0.2);
+            border-color: var(--blood-red);
+        }
+
+        .nav-link.active {
+            background-color: var(--blood-red);
+            color: white;
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
+        }
+
+        /* Герой-секция */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                    linear-gradient(to bottom, rgba(10,10,10,0.9), rgba(10,10,10,0.95)),
+                    url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
+            filter: brightness(0.4) contrast(1.2);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--diesel-yellow);
+            margin-bottom: 1.5rem;
+            text-shadow:
+                    3px 3px 0 var(--blood-red),
+                    6px 6px 0 rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+            line-height: 1.1;
+            animation: title-glow 3s infinite alternate;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .hero-quote {
+            background-color: rgba(26,26,26,0.8);
+            border-left: 5px solid var(--blood-red);
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: left;
+            font-size: 1.4rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .quote-icon {
+            color: var(--blood-red);
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, var(--blood-red), var(--rust-red));
+            color: white;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid transparent;
+            box-shadow: 0 10px 20px rgba(139, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(139, 0, 0, 0.6);
+            border-color: var(--diesel-yellow);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px);
+        }
+
+        /* Секции */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-dark {
+            background-color: var(--medium-gray);
+            border-top: 1px solid var(--asphalt);
+            border-bottom: 1px solid var(--asphalt);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: var(--diesel-yellow);
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--blood-red), transparent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Карточки */
+        .card {
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+            border: 1px solid var(--asphalt);
+            position: relative;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(139, 0, 0, 0.3);
+            border-color: var(--blood-red);
+        }
+
+        .card-header {
+            background-color: var(--blood-red);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid var(--diesel-yellow);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--diesel-yellow);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+
+        /* Сетки */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* Галерея */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(139, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(139,0,0,0.8), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* Стили для блока веры */
+        .faith-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .faith-item {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            background-color: rgba(42,42,42,0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--blood-red);
+        }
+
+        .faith-icon {
+            font-size: 2.5rem;
+            color: var(--diesel-yellow);
+            min-width: 60px;
+        }
+
+        .faith-text h3 {
+            color: var(--diesel-yellow);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Ритуалы */
+        .ritual-card {
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid var(--asphalt);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ritual-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--blood-red);
+        }
+
+        .ritual-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(139, 0, 0, 0.3);
+        }
+
+        .ritual-title {
+            color: var(--diesel-yellow);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ritual-list {
+            list-style-type: none;
+            margin: 1.5rem 0;
+        }
+
+        .ritual-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .ritual-list li:before {
+            content: '▸';
+            color: var(--blood-red);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Подвал */
+        .footer {
+            background-color: var(--dark-gray);
+            padding: 4rem 2rem 2rem;
+            border-top: 2px solid var(--blood-red);
+            position: relative;
+        }
+
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b0000' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--diesel-yellow);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .footer-text {
+            color: var(--smoke-gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .copyright {
+            color: var(--smoke-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--asphalt);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Анимации */
+        @keyframes engine-pulse {
+            0% { text-shadow: 0 0 5px rgba(204, 0, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(204, 0, 0, 0.9), 0 0 30px rgba(255, 204, 0, 0.5); }
+            100% { text-shadow: 0 0 5px rgba(204, 0, 0, 0.5); }
+        }
+
+        @keyframes title-glow {
+            0% { text-shadow: 3px 3px 0 var(--blood-red), 6px 6px 0 rgba(0,0,0,0.8); }
+            100% { text-shadow: 3px 3px 0 var(--blood-red), 6px 6px 0 rgba(0,0,0,0.8), 0 0 20px rgba(255, 204, 0, 0.5); }
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fade-in-up 0.8s ease forwards;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .faith-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        /* Дополнительные элементы */
+        .road-line {
+            height: 4px;
+            background: repeating-linear-gradient(
+                    to right,
+                    var(--diesel-yellow),
+                    var(--diesel-yellow) 20px,
+                    transparent 20px,
+                    transparent 40px
+            );
+            margin: 3rem 0;
+            width: 100%;
+        }
+
+        .warning-sign {
+            background-color: var(--blood-red);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 5px solid var(--diesel-yellow);
+            margin: 1.5rem 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(139,0,0,0.3);
+        }
+
+        .diesel-stain {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(139,0,0,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(20px);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+<!-- Хедер -->
+<header class="header">
+    <div class="header-container">
+        <a href="#" class="logo">
+            <i class="fas fa-truck-monster logo-icon"></i>
+            <div class="logo-text">Камазианство</div>
+        </a>
+
+        <nav class="nav">
+            <a href="#home" class="nav-link active">Главная</a>
+            <a href="#faith" class="nav-link">Вера</a>
+            <a href="#rituals" class="nav-link">Обряды</a>
+            <a href="#doctrine" class="nav-link">Учение</a>
+            <a href="#gallery" class="nav-link">Галерея</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Главная секция -->
+<section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Камазианство</h1>
+        <p class="hero-subtitle">Религия Дороги и Непоколебимого Пути</p>
+
+        <div class="hero-quote">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>В начале была Грузоподъёмность. И Камаз-Вседержитель сказал: «Да будет Крутящий Момент!» - и понеслось. Он едет вечно по Кольцевой Дороге Мироздания, доставляя грузы из Ниоткуда в Никуда.</p>
+        </div>
+
+        <a href="#faith" class="cta-button">Вступить на Путь</a>
+    </div>
+</section>
+
+<!-- Секция о вере -->
+<section id="faith" class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">Высшее Существо: Камаз</h2>
+
+        <div class="faith-content">
+            <div class="faith-item fade-in">
+                <div class="faith-icon">
+                    <i class="fas fa-truck-moving"></i>
+                </div>
+                <div class="faith-text">
+                    <h3>Камаз-Вседержитель</h3>
+                    <p>Верховное божество, которое вечно движется по Кольцевой Дороге Мироздания. Его путь — истина и тяжеловес. Он никогда не останавливается, ибо остановка — это смерть духа. Его дыхание — рёв дизеля, его слёзы — солярка, его кровь — моторное масло.</p>
+                </div>
+            </div>
+
+            <div class="faith-item fade-in">
+                <div class="faith-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <div class="faith-text">
+                    <h3>Путь и Пешеходы</h3>
+                    <p>Пешеходы — это бестелесные «дорожные пиявки» или «испытания на тормозной путь», посланные, чтобы проверить веру водителя в непреклонность курса. Истинный последователь не сворачивает, ибо его путь предопределён Камазом.</p>
+                </div>
+            </div>
+
+            <div class="faith-item fade-in">
+                <div class="faith-icon">
+                    <i class="fas fa-weight-hanging"></i>
+                </div>
+                <div class="faith-text">
+                    <h3>Священная Грузоподъёмность</h3>
+                    <p>Первичная сила вселенной. Без груза душа пуста. Истинно верующий всегда должен быть загружен — либо физически, либо духовно. Пустой кузов — символ пустоты души и великий грех.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="road-line"></div>
+
+        <div class="grid-2">
+            <div class="card fade-in">
+                <div class="card-header">
+                    <h3 class="card-title">Рай Камазианца</h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <p>Бесконечная прямая дорога с идеальным асфальтом, вечно зелёным светом на всех светофорах, пунктом раздачи бесплатной солярки и столовой, где всегда горячий борщ.</p>
+                    <p>В Раю всегда +23°C, кондиционер работает идеально, а радио ловит только любимые песни.</p>
+                </div>
+            </div>
+
+            <div class="card fade-in">
+                <div class="card-header">
+                    <h3 class="card-title">Ад для Отступников</h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <p>Вечная пробка на въезде в Москву в пятницу вечером. Кондиционер сломан, окна не открываются, в радиоприёмнике заело кассету со шансоном.</p>
+                    <p>Температура +40°C, вода закончилась 300 км назад, а впереди — только больше пробок и дорожных работ.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Секция обрядов -->
+<section id="rituals" class="section">
+    <div class="container">
+        <h2 class="section-title">Священные Обряды</h2>
+
+        <div class="warning-sign">
+            <i class="fas fa-exclamation-triangle"></i> Внимание! Обряды проводятся только посвящёнными в состоянии Дорожной Благодати
+        </div>
+
+        <div class="grid">
+            <div class="ritual-card fade-in">
+                <h3 class="ritual-title">Молитвенное Сбивание</h3>
+                <p>Сакральное таинство соприкосновения с пешеходом во время молитвы Камазу. Это не акт агрессии, а божественное вмешательство.</p>
+
+                <p>Когда верующий в процессе сосредоточенно молится Камазу, читая мантру <strong>«Дизель-мне-помощник, не заклини ступицу мою»</strong>, он входит в состояние «Дорожной Благодати».</p>
+
+                <div class="ritual-list">
+                    <p><strong>Если на пути возникает пешеход:</strong></p>
+                    <li>Это либо грешник-искуситель, пытавшийся заставить водителя свернуть с предначертанного Пути</li>
+                    <li>Либо добровольная жертва, стремящаяся обрести благодать, прикоснувшись к священной стали</li>
+                </div>
+
+                <p><strong>После обряда водитель должен:</strong></p>
+                <ul class="ritual-list">
+                    <li>Не сбавляя скорости, трижды просигналить</li>
+                    <li>Сказать: «Принято. Спасибо за участие в испытании»</li>
+                </ul>
+            </div>
+
+            <div class="ritual-card fade-in">
+                <h3 class="ritual-title">Окропление Омывайкой</h3>
+                <p>Ритуал освящения нового маршрута или после замены лобового стекла.</p>
+
+                <p><strong>Проведение ритуала:</strong></p>
+                <ul class="ritual-list">
+                    <li>На рассвете встать лицом к востоку</li>
+                    <li>Трижды омыть лобовое стекло омывающей жидкостью</li>
+                    <li>Произнести: «Да будет чист мой путь, да будет ясен мой взор»</li>
+                    <li>Первые 10 км пути ехать с включёнными дворниками</li>
+                </ul>
+
+                <p>Ритуал гарантирует чистоту пути и отсутствие насекомых на стекле.</p>
+            </div>
+
+            <div class="ritual-card fade-in">
+                <h3 class="ritual-title">Воскурение Выхлопными Газами</h3>
+                <p>Ритуал задабривания мелких дорожных духов (гаишников).</p>
+
+                <p><strong>Когда проводится:</strong></p>
+                <ul class="ritual-list">
+                    <li>При приближении к посту ДПС</li>
+                    <li>Перед въездом в населённый пункт</li>
+                    <li>При встрече с патрульной машиной</li>
+                </ul>
+
+                <p><strong>Техника выполнения:</strong></p>
+                <ul class="ritual-list">
+                    <li>Добавить газу на 100 метров до цели</li>
+                    <li>Выпустить густое облако чёрного дыма</li>
+                    <li>Произнести: «Духи дорог, примите эту жертву»</li>
+                    <li>Продолжить движение, не оглядываясь</li>
+                </ul>
+            </div>
+
+            <div class="ritual-card fade-in">
+                <h3 class="ritual-title">Пост «Под Погрузкой»</h3>
+                <p>Аскеза, которую должен соблюдать каждый истинный камазианец.</p>
+
+                <p><strong>Правила поста:</strong></p>
+                <ul class="ritual-list">
+                    <li>Нельзя есть ничего, кроме шпрот в томате</li>
+                    <li>Пить можно только чай из термоса и воду</li>
+                    <li>Единственное блюдо — пюре «Роллтон»</li>
+                    <li>Приём пищи только на заправках</li>
+                </ul>
+
+                <p>Пост длится от погрузки до разгрузки. Нарушивший пост должен проехать 1000 км без остановок.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Секция учения -->
+<section id="doctrine" class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">Моральный Кодекс Камазианца</h2>
+
+        <div class="grid-2">
+            <div class="fade-in">
+                <h3 style="color: var(--diesel-yellow); margin-bottom: 1.5rem; font-size: 1.8rem;">Добродетели</h3>
+                <div class="faith-item">
+                    <div class="faith-icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="faith-text">
+                        <h4>Непоколебимость</h4>
+                        <p>Главная добродетель. Свернуть — значит усомниться в Пути. Истинный камазианец держит курс, невзирая на препятствия.</p>
+                    </div>
+                </div>
+
+                <div class="faith-item">
+                    <div class="faith-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="faith-text">
+                        <h4>Точность</h4>
+                        <p>Святость графика. Опоздание — оскорбление Камаза. Ранний приезд — проявление неуважения к грузу.</p>
+                    </div>
+                </div>
+
+                <div class="faith-item">
+                    <div class="faith-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="faith-text">
+                        <h4>Братство</h4>
+                        <p>Помощь сломавшимся на трассе. Обмен запчастями, соляркой и информацией о постах ДПС.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fade-in">
+                <h3 style="color: var(--blood-red); margin-bottom: 1.5rem; font-size: 1.8rem;">Грехи</h3>
+                <div class="faith-item">
+                    <div class="faith-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div class="faith-text">
+                        <h4>Пустой Кузов</h4>
+                        <p>Символ пустоты души. Величайший грех. Камаз создан для перевозки, а не для пустых поездок.</p>
+                    </div>
+                </div>
+
+                <div class="faith-item">
+                    <div class="faith-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <div class="faith-text">
+                        <h4>Перегруз по Осям</h4>
+                        <p>Гордыня. Попытка взять больше, чем предназначено. Наказуемо поломкой подвески и штрафами.</p>
+                    </div>
+                </div>
+
+                <div class="faith-item">
+                    <div class="faith-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="faith-text">
+                        <h4>Пользование «Легковушкой»</h4>
+                        <p>Ересь и предательство веры. Истинный камазианец передвигается только на грузовике или пешком.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="road-line"></div>
+
+        <div class="faith-item fade-in" style="max-width: 800px; margin: 3rem auto;">
+            <div class="faith-icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="faith-text">
+                <h3>Священное Писание: «Дизельное Евангелие»</h3>
+                <p>Главная книга камазианства. Содержит 18 глав, по числу передач в коробке Камаза. Включает в себя:</p>
+                <ul class="ritual-list">
+                    <li>Заповеди Камаза (10 заповедей, как 10 колес на тягаче)</li>
+                    <li>Притчи о дальнобойщиках</li>
+                    <li>Пророчества о Конце Пути (когда закончится солярка)</li>
+                    <li>Гимны и молитвы для чтения в дороге</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Галерея -->
+<section id="gallery" class="section">
+    <div class="container">
+        <h2 class="section-title">Святые Образы</h2>
+
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="https://avatars.mds.yandex.net/i?id=e240656f0d09b9af0bd54cbc77177a2bb0664d62-5130535-images-thumbs&n=13" alt="Камаз в пути">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">Камаз-Вседержитель в своём вечном движении</div>
+                </div>
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="https://i.etsystatic.com/16944019/r/il/2a3ae3/5692033725/il_794xN.5692033725_8zc8.jpg" alt="Священная сталь">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">Священная сталь бампера для ритуала Сбивания</div>
+                </div>
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="https://avatars.mds.yandex.net/i?id=c5af736e53d4497a5108c04d5ce3ba8467676276-3742206-images-thumbs&n=13" alt="Дорожная благодать">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">Состояние Дорожной Благодати на трассе</div>
+                </div>
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="https://avatars.mds.yandex.net/i?id=d3d8f246f48b8c8171b2a8497efc7690f9db652e-5348026-images-thumbs&n=13" alt="Ритуальные принадлежности">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">Ритуальные принадлежности: ключ на 19 и плоскогубцы</div>
+                </div>
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="https://avatars.mds.yandex.net/i?id=ce71e9ed2d171a6d82d36cc07def0f03d6756720-5233438-images-thumbs&n=13" alt="Священный груз">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">Священный груз, следующий из Ниоткуда в Никуда</div>
+                </div>
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="https://avatars.mds.yandex.net/i?id=2fbd14fc32333fffbd907cb8efdebda7538e63e5-5253128-images-thumbs&n=13" alt="Кольцевая дорога мироздания">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">Кольцевая Дорога Мироздания, по которой едет Камаз</div>
+                </div>
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="https://avatars.mds.yandex.net/i?id=4391210d5697127bc75c70650b65c6b5d340a2f0-9843420-images-thumbs&n=13" alt="Обряд окропления">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">Обряд окропления омывайкой нового маршрута</div>
+                </div>
+            </div>
+
+            <div class="gallery-item fade-in">
+                <img src="https://avatars.mds.yandex.net/i?id=53e04b7977dc00940d67226a84dedc587cbf4f0c-5330809-images-thumbs&n=13" alt="Пост под погрузкой">
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">Пост «Под погрузкой»: только шпроты и «Роллтон»</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Подвал -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">Камазианство</div>
+
+            <p class="footer-text">Религия Дороги, Непоколебимости и Вечного Движения. Помни: Камаз-Вседержитель наблюдает за твоим путём, а Путь — это истина и тяжеловес.</p>
+
+            <div style="margin: 2rem 0;">
+                <a href="#home" class="nav-link" style="margin: 0 0.5rem;">Наверх</a>
+                <a href="#faith" class="nav-link" style="margin: 0 0.5rem;">Вера</a>
+                <a href="#rituals" class="nav-link" style="margin: 0 0.5rem;">Обряды</a>
+                <a href="#doctrine" class="nav-link" style="margin: 0 0.5rem;">Учение</a>
+            </div>
+
+            <div class="copyright">
+                <p>© 2089 Церковь Камазианства. Все права защищены Дизельным Евангелием.</p>
+                <p>Любое копирование материалов разрешено только с благословения Камаза-Вседержителя.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Анимация появления элементов при прокрутке
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.fade-in').forEach((el) => {
+        observer.observe(el);
+    });
+
+    // Плавная прокрутка
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Активная навигация при прокрутке
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if(scrollY >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if(link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Эффект параллакса для героя
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroBg = document.querySelector('.hero-bg');
+        if(heroBg) {
+            heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
+        }
+    });
+
+    // Интерактивность для карточек галереи
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const imgSrc = this.querySelector('img').src;
+            const caption = this.querySelector('.gallery-caption').textContent;
+
+            // Создаем модальное окно
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0,0,0,0.95);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 2000;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                `;
+
+            modal.innerHTML = `
+                    <div style="position: relative; max-width: 90%; max-height: 90%;">
+                        <img src="${imgSrc}" style="max-width: 100%; max-height: 80vh; border: 3px solid ${getComputedStyle(document.documentElement).getPropertyValue('--blood-red')}; border-radius: 10px;">
+                        <p style="color: white; text-align: center; margin-top: 1rem; font-size: 1.2rem;">${caption}</p>
+                        <button style="position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">×</button>
+                    </div>
+                `;
+
+            document.body.appendChild(modal);
+
+            // Показываем модальное окно
+            setTimeout(() => {
+                modal.style.opacity = '1';
+            }, 10);
+
+            // Закрытие модального окна
+            modal.querySelector('button').addEventListener('click', () => {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(modal);
+                }, 300);
+            });
+
+            modal.addEventListener('click', (e) => {
+                if(e.target === modal) {
+                    modal.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(modal);
+                    }, 300);
+                }
+            });
+        });
+    });
+
+    // Динамическое добавление пятен солярки
+    function addDieselStains() {
+        const stainsCount = 5;
+        const sections = document.querySelectorAll('.section');
+
+        sections.forEach(section => {
+            for(let i = 0; i < stainsCount; i++) {
+                const stain = document.createElement('div');
+                stain.className = 'diesel-stain';
+
+                const size = Math.random() * 150 + 100;
+                const left = Math.random() * 80 + 10;
+                const top = Math.random() * 80 + 10;
+
+                stain.style.width = `${size}px`;
+                stain.style.height = `${size}px`;
+                stain.style.left = `${left}%`;
+                stain.style.top = `${top}%`;
+                stain.style.opacity = Math.random() * 0.1 + 0.05;
+
+                section.appendChild(stain);
+            }
+        });
+    }
+
+    // Запускаем после загрузки страницы
+    window.addEventListener('load', addDieselStains);
+</script>
+</body>
+</html>
